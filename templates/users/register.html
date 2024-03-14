@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <style>
+        .form-signin {
+            max-width: 330px;
+            padding: 1rem;
+        }
+
+        .form-signin .form-floating:focus-within {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
+    <div class="form-signin w-100 m-auto">
+        <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-floating">
+                <label for="floatingInput">First Name</label>
+                <input type="text" class="form-control" id="floatingInput" name="first_name">
+            </div>
+            <div class="form-floating">
+                <label for="floatingInput">Last Name</label>
+                <input type="text" class="form-control" id="floatingInput" name="last_name">
+            </div>
+            <div class="form-floating">
+                <label for="floatingInput">Username</label>
+                <input type="text" class="form-control" id="floatingInput" name="username">
+            </div>
+            <div class="form-floating">
+                <label for="floatingInput">Email</label>
+                <input type="email" class="form-control" id="floatingInput" name="email">
+            </div>
+            <div class="form-floating">
+                <label for="floatingInput">Password</label>
+                <input type="password" class="form-control" id="floatingInput" name="password1">
+            </div>
+            <div class="form-floating">
+                <label for="floatingInput">Password Again</label>
+                <input type="password" class="form-control" id="floatingInput" name="password2">
+            </div>
+
+            <input type="submit" class="btn btn-success w-100 py-2" value="Submit">
+        </form>
+    </div>
+
+
+
+{% endblock %}
+

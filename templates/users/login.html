@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <style>
+        .form-signin {
+            max-width: 330px;
+            padding: 1rem;
+        }
+
+        .form-signin .form-floating:focus-within {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
+    <div class="form-signin w-100 m-auto">
+        <h1 class="h3 mb-3 fw-normal">Sign in</h1>
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+
+        <form method="post">
+            {% csrf_token %}
+            
+            {{ form }}
+            
+            <input type="submit" class="btn btn-success w-100 py-2 mt-2" value="Submit">
+        </form>
+    </div>
+
+
+
+{% endblock %}
+

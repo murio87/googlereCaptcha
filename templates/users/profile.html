@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="content-section col-lg-12 col-md-12 col-sm-12 tutorial-style" style="min-height: 65vh">
+        <legend class="border-bottom mb-4">Profile Info</legend>
+    {% for message in messages %}
+    	{{ message }}
+    {% endfor %}
+    
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="media">
+                <img class="rounded-circle account-img profile-image", alt="profile", src="{{ form.instance.image.url }}">
+                <div class="media-body">
+                    <h2 class="account-heading">{{ form.instance.username }}
+                        <small class="text-muted">{{ form.instance.status }}</small>
+                    </h2>
+                    <p class="text-secondary">{{ form.instance.first_name }} {{ form.instance.last_name }}</p>
+                    <p class="text-secondary">{{ form.instance.email }}</p>
+                    <p class="text-secondary">{{ form.instance.description }}</p>
+                </div>
+            </div>
+            {% if user.username == form.instance.username %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Edit Profile Info</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-6 mb-3">
+                            <p>First Name {{ form.first_name }}</p>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <p>Last Name {{ form.last_name }}</p>
+                        </div>
+                    </div>
+                    <p>Username {{ form.username }}</p>
+                    <p>Email {{ form.email }}</p>
+                    <p>Description {{ form.description }}</p>
+                    <a href="#">change password</a>
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Update</button>
+                </div>
+            	
+            {% endif %} 
+        </form>
+    </div>
+{% endblock %}
